@@ -1,0 +1,47 @@
+﻿<Window x:Class="TemperatureDataOutput.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TemperatureDataOutput" xmlns:viewmodel="clr-namespace:TemperatureDataOutput.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainVM}"
+        mc:Ignorable="d"
+        Title="Датчик температуры" Height="283" Width="338">
+
+    <TabControl Height="252" VerticalAlignment="Top">
+        <TabItem Header="Основная">
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="74*"/>
+                    <ColumnDefinition Width="142*"/>
+                    <ColumnDefinition Width="53*"/>
+                    <ColumnDefinition Width="75*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="temperatureBox" Text="{Binding Temperature, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="29,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" IsEnabled="False" Grid.Column="1"/>
+                <Label x:Name="tLabel" Content="t°С:" HorizontalAlignment="Left" Margin="74,55,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="takeTemperatureButton" Content="Снять температуру" HorizontalAlignment="Left" Margin="32,143,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2" Command="{Binding TakeTemperatureCommand, Mode=OneWay}" Grid.Column="1"/>
+                <TextBox x:Name="commandStateBox" Text="{Binding LastOperationState, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="13,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" IsEnabled="False" Grid.Column="1"/>
+                <Label x:Name="commandStateLabel" Content="Статус:" HorizontalAlignment="Left" Margin="65,4,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Настройки">
+            <Grid Height="231">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="97*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="portTypeBox" SelectedItem="{Binding SelectedComPort, UpdateSourceTrigger=PropertyChanged}" ItemsSource ="{Binding ComPorts}" HorizontalAlignment="Left" Margin="91,14,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                <Label x:Name="portLabel" Content="Имя порта:" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="applyButton" Content="Применить" HorizontalAlignment="Left" Margin="111,187,0,0" VerticalAlignment="Top" Width="74" Grid.Column="1" Command="{Binding UpdateOptionsCommand, Mode=OneWay}"/>
+                <Label x:Name="portLabel_Copy" Content="baudRate:" HorizontalAlignment="Left" Margin="13,43,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="91,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Text="{Binding BaudRate}"/>
+                <Label x:Name="portLabel_Copy1" Content="Чётность:" HorizontalAlignment="Left" Margin="11,78,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="portTypeBox_Copy" SelectedItem="{Binding SelectedParity, UpdateSourceTrigger=PropertyChanged}" ItemsSource ="{Binding Parities}" HorizontalAlignment="Left" Margin="91,82,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                <Label x:Name="portLabel_Copy2" Content="dataBits:" HorizontalAlignment="Left" Margin="11,109,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="91,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Text="{Binding SelectedDataBits}"/>
+                <Label x:Name="portLabel_Copy3" Content="stopBits:" HorizontalAlignment="Left" Margin="13,142,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="portTypeBox_Copy1" SelectedItem="{Binding SelectedStop, UpdateSourceTrigger=PropertyChanged}" ItemsSource ="{Binding Stops}" HorizontalAlignment="Left" Margin="91,142,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

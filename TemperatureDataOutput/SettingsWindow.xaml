@@ -1,0 +1,15 @@
+﻿<Window x:Class="TemperatureDataOutput.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TemperatureDataOutput"
+        mc:Ignorable="d"
+        Title="Параметры порта" Height="200" Width="350">
+    <Grid>
+        <Label x:Name="portLabel" Content="Тип порта:" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="portTypeTextBox" HorizontalAlignment="Left" Margin="139,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="18" IsEnabled="False"/>
+        <Button x:Name="applyButton" Content="Применить" HorizontalAlignment="Left" Margin="139,154,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
